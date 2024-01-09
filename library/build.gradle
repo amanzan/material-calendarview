@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -25,7 +24,7 @@ android {
   }
 }
 
-group = "com.github.prolificinteractive"
+group = "com.github.amanzan"
 version = android.defaultConfig.versionName
 archivesBaseName = 'material-calendarview'
 

@@ -172,6 +172,7 @@ import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.
       setTextColor(getTextColors().getColorForState(
           new int[] { -android.R.attr.state_enabled }, Color.GRAY));
     }
+
     setVisibility(shouldBeVisible ? View.VISIBLE : View.INVISIBLE);
   }
 
@@ -197,16 +198,18 @@ import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.
     }
 
     mCircleDrawable.setBounds(circleDrawableRect);
-
+    mCircleDrawable.setAlpha(255);
     super.onDraw(canvas);
   }
 
   private void regenerateBackground() {
     if (selectionDrawable != null) {
-      setBackgroundDrawable(selectionDrawable);
+      mCircleDrawable.setAlpha(0);
+      setBackground(selectionDrawable);
     } else {
       mCircleDrawable = generateBackground(selectionColor, fadeTime, circleDrawableRect);
-      setBackgroundDrawable(mCircleDrawable);
+      mCircleDrawable.setAlpha(0);
+      setBackground(mCircleDrawable);
     }
   }
 
