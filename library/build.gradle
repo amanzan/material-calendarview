@@ -38,6 +38,19 @@ dependencies {
   rootProject.ext.androidTestDep.each { androidTestImplementation it }
 }
 
+afterEvaluate {
+  publishing {
+    publications {
+      release(MavenPublication) {
+        from components.release
+        groupId = 'com.github.amanzan' //your git id
+        artifactId = 'material-calendarview' //your-repository
+        version = '2.0.2' // As same as the Tag
+      }
+    }
+  }
+}
+
 tasks.withType(Javadoc) {
   options.addStringOption('Xdoclint:none', '-quiet')
   options.addStringOption('encoding', 'UTF-8')
