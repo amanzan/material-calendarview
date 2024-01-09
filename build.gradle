@@ -3,6 +3,9 @@ wrapper {
   gradleVersion = "5.1.1"
 }
 buildscript {
+  ext {
+    kotlin_version = '1.9.10'
+  }
   repositories {
     google()
     jcenter()
@@ -10,10 +13,11 @@ buildscript {
     maven { url "https://jitpack.io" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:7.0.4'
+    classpath 'com.android.tools.build:gradle:7.4.2'
     classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     classpath 'com.github.dcendents:android-maven-plugin:1.2'
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
 }
 

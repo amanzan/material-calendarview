@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -27,6 +28,11 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.prolificinteractive.materialcalendarview.decorators.DaysColorDecorator;
+import com.prolificinteractive.materialcalendarview.decorators.FontDecorator;
+import com.prolificinteractive.materialcalendarview.decorators.SelectedDateDecorator;
+import com.prolificinteractive.materialcalendarview.decorators.SelectedRangeDecorator;
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
@@ -652,6 +658,31 @@ public class MaterialCalendarView extends ViewGroup {
     accentColor = color;
     adapter.setSelectionColor(color);
     invalidate();
+  }
+
+  /**
+   * @param typeface The typeface to apply to all calendar textviews
+   */
+  public void setCustomTypeface(Typeface typeface) {
+    addDecorator(new FontDecorator(typeface));
+  }
+
+  /**
+   * @param color Set the color of the selected or selected days
+   */
+  public void setSelectedDayColor(int color) {
+    setOnDateChangedListener((widget, date, selected) -> invalidateDecorators());
+    setOnRangeSelectedListener((widget, dates) -> invalidateDecorators());
+
+    addDecorator(new SelectedDateDecorator(this, color));
+    addDecorator(new SelectedRangeDecorator(this, color));
+  }
+
+  /**
+   * @param color Set the color for all days
+   */
+  public void setDaysColor(int color) {
+    addDecorator(new DaysColorDecorator(color));
   }
 
   /**
