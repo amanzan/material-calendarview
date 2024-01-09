@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import org.threeten.bp.LocalDate;
 
@@ -22,14 +20,14 @@ public class MultipleViewActivity extends AppCompatActivity {
   //number of MaterialCalendarViews to display in list
   static final int NUM_ENTRIES = 3;
 
-  @BindView(R.id.calendar_list)
   RecyclerView calendarList;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiple);
-    ButterKnife.bind(this);
+
+    calendarList = findViewById(R.id.calendar_list);
 
     //setup RecyclerView
     calendarList.setLayoutManager(new LinearLayoutManager(this));

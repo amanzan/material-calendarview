@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -27,14 +25,14 @@ public class BasicActivityDecorated extends AppCompatActivity implements OnDateS
 
   private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
 
-  @BindView(R.id.calendarView)
   MaterialCalendarView widget;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_basic);
-    ButterKnife.bind(this);
+
+    widget = findViewById(R.id.calendarView);
 
     widget.setOnDateChangedListener(this);
     widget.setShowOtherDates(MaterialCalendarView.SHOW_ALL);

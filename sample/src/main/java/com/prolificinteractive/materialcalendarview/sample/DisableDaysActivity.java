@@ -2,8 +2,6 @@ package com.prolificinteractive.materialcalendarview.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -16,12 +14,12 @@ import org.threeten.bp.Month;
  */
 public class DisableDaysActivity extends AppCompatActivity {
 
-  @BindView(R.id.calendarView) MaterialCalendarView widget;
+  MaterialCalendarView widget;
 
   @Override protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_basic);
-    ButterKnife.bind(this);
+    widget = findViewById(R.id.calendarView);
 
     // Add a decorator to disable prime numbered days
     widget.addDecorator(new PrimeDayDisableDecorator());

@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-apply plugin: 'maven'
 
 android {
-  compileSdk 33
+  compileSdkVersion rootProject.ext.compileSdkVersion
 
   defaultConfig {
-    minSdkVersion 24
-    targetSdkVersion 33
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
 
     versionCode Integer.parseInt(project.VERSION_CODE)
     versionName project.VERSION_NAME

@@ -32,6 +32,4 @@ dependencies {
   implementation rootProject.ext.threeTenAbp
   implementation rootProject.ext.supportAppCompat
   implementation rootProject.ext.recyclerviewV7
-  implementation rootProject.ext.butterknife
-  annotationProcessor rootProject.ext.butterknifeCompiler
 }

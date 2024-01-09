@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -30,17 +28,15 @@ public class BasicActivity extends AppCompatActivity
 
   private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("EEE, d MMM yyyy");
 
-  @BindView(R.id.calendarView)
   MaterialCalendarView widget;
-
-  @BindView(R.id.textView)
   TextView textView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_basic);
-    ButterKnife.bind(this);
+
+    widget = findViewById(R.id.calendarView);
 
     widget.setOnDateChangedListener(this);
     widget.setOnDateLongClickListener(this);
@@ -50,6 +46,7 @@ public class BasicActivity extends AppCompatActivity
 
     widget.setSelectionMode(MaterialCalendarView.SELECTION_MODE_RANGE);
 
+    textView = findViewById(R.id.textView);
 
     //Setup initial text
     textView.setText("No Selection");

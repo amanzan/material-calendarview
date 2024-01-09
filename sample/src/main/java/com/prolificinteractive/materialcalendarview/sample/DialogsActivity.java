@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
@@ -27,17 +25,19 @@ public class DialogsActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_dialogs);
-    ButterKnife.bind(this);
-  }
+    findViewById(R.id.button_normal_dialog).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        new SimpleDialogFragment().show(getSupportFragmentManager(), "test-normal");
+      }
+    });
 
-  @OnClick(R.id.button_normal_dialog)
-  void onNormalDialogClick() {
-    new SimpleDialogFragment().show(getSupportFragmentManager(), "test-normal");
-  }
-
-  @OnClick(R.id.button_simple_dialog)
-  void onSimpleCalendarDialogClick() {
-    new SimpleCalendarDialogFragment().show(getSupportFragmentManager(), "test-simple-calendar");
+    findViewById(R.id.button_simple_dialog).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        new SimpleCalendarDialogFragment().show(getSupportFragmentManager(), "test-simple-calendar");
+      }
+    });
   }
 
   public static class SimpleDialogFragment extends AppCompatDialogFragment {

@@ -3,9 +3,8 @@ package com.prolificinteractive.materialcalendarview.sample;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.view.View;
+
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -24,12 +23,13 @@ public class SwappableBasicActivityDecorated extends AppCompatActivity
 
   private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
 
-  @BindView(R.id.calendarView) MaterialCalendarView widget;
+  MaterialCalendarView widget;
 
   @Override protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_basic_modes);
-    ButterKnife.bind(this);
+
+    widget = findViewById(R.id.calendarView);
 
     widget.setOnDateChangedListener(this);
     widget.setShowOtherDates(MaterialCalendarView.SHOW_ALL);
@@ -47,6 +47,24 @@ public class SwappableBasicActivityDecorated extends AppCompatActivity
         new HighlightWeekendsDecorator(),
         oneDayDecorator
     );
+
+    findViewById(R.id.button_weeks).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        widget.state().edit()
+                .setCalendarDisplayMode(CalendarMode.WEEKS)
+                .commit();
+      }
+    });
+
+    findViewById(R.id.button_months).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        widget.state().edit()
+                .setCalendarDisplayMode(CalendarMode.MONTHS)
+                .commit();
+      }
+    });
   }
 
   @Override
@@ -57,19 +75,5 @@ public class SwappableBasicActivityDecorated extends AppCompatActivity
     //If you change a decorate, you need to invalidate decorators
     oneDayDecorator.setDate(date.getDate());
     widget.invalidateDecorators();
-  }
-
-  @OnClick(R.id.button_weeks)
-  public void onSetWeekMode() {
-    widget.state().edit()
-        .setCalendarDisplayMode(CalendarMode.WEEKS)
-        .commit();
-  }
-
-  @OnClick(R.id.button_months)
-  public void onSetMonthMode() {
-    widget.state().edit()
-        .setCalendarDisplayMode(CalendarMode.MONTHS)
-        .commit();
   }
 }
