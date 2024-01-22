@@ -51,6 +51,9 @@ public class BasicActivity extends AppCompatActivity
     //Setup initial text
     textView.setText("No Selection");
 
+    widget.setHeaderTextColor(Color.RED);
+    widget.setWeekDayColor(Color.RED);
+
     // Set OnDateSelectedListener to handle date selection
     widget.setOnDateChangedListener(new OnDateSelectedListener() {
       @Override

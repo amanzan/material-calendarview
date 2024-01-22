@@ -1,5 +1,6 @@
 package com.prolificinteractive.materialcalendarview;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -42,6 +43,8 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
   private List<DecoratorResult> decoratorResults = null;
   private boolean selectionEnabled = true;
   boolean showWeekDays;
+  private int weekDayColor = -1;
+  private Typeface weekDayFont = null;
 
   CalendarPagerAdapter(MaterialCalendarView mcv) {
     this.mcv = mcv;
@@ -156,6 +159,12 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
     if (weekDayTextAppearance != null) {
       pagerView.setWeekDayTextAppearance(weekDayTextAppearance);
     }
+    if (weekDayColor != -1) {
+      pagerView.setWeekDayColor(weekDayColor);
+    }
+    if (weekDayFont != null) {
+      pagerView.setWeekDayFont(weekDayFont);
+    }
     pagerView.setShowOtherDates(showOtherDates);
     pagerView.setMinimumDate(minDate);
     pagerView.setMaximumDate(maxDate);
@@ -260,6 +269,14 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
     for (V pagerView : currentViews) {
       pagerView.setWeekDayTextAppearance(taId);
     }
+  }
+
+  public void setWeekDayColor(int color) {
+    weekDayColor = color;
+  }
+
+  public void setWeekDayFont(Typeface font) {
+    weekDayFont = font;
   }
 
   public void setRangeDates(CalendarDay min, CalendarDay max) {

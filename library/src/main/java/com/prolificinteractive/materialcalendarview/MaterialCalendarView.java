@@ -768,6 +768,22 @@ public class MaterialCalendarView extends ViewGroup {
   }
 
   /**
+   * Set the color of the header
+   * @param color
+   */
+  public void setHeaderTextColor(int color) {
+    title.setTextColor(color);
+  }
+
+  /**
+   * Set the font of the header
+   * @param font
+   */
+  public void setHeaderFont(Typeface font) {
+    title.setTypeface(font);
+  }
+
+  /**
    * @param resourceId The text appearance resource id.
    */
   public void setDateTextAppearance(int resourceId) {
@@ -779,6 +795,18 @@ public class MaterialCalendarView extends ViewGroup {
    */
   public void setWeekDayTextAppearance(int resourceId) {
     adapter.setWeekDayTextAppearance(resourceId);
+  }
+
+  /**
+   * Set the color of the week days
+   * @param color
+   */
+  public void setWeekDayColor(int color) {
+    adapter.setWeekDayColor(color);
+  }
+
+  public void setWeekDayFont(Typeface font) {
+    adapter.setWeekDayFont(font);
   }
 
   /**
